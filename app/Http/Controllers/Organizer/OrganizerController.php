@@ -62,4 +62,10 @@ class OrganizerController extends Controller
     {
         //
     }
+
+    public function __construct()
+    {
+        $this->middleware('organizer');
+    }
+
 }
