@@ -36,4 +36,3 @@ Route::middleware(['auth', 'client'])->group(function () {
 Route::middleware(['auth', 'organizer'])->group(function () {
     // Organizer routes here
 });
-
