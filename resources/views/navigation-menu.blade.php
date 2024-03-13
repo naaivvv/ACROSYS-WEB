@@ -15,6 +15,21 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @if(Auth::check() && Auth::user()->role == 1) {{-- Assuming 1 represents the admin role --}}
+                    <x-nav-link href="{{ route('organizers') }}" :active="request()->routeIs('organizers')">
+                        {{ __('Organizer') }}
+                    </x-nav-link>
+                    {{-- <x-nav-link href="{{ route('organizers') }}" :active="request()->routeIs('organizers')"> --}}
+                    <x-nav-link>
+                        {{ __('Clients') }}
+                    </x-nav-link>
+                    <x-nav-link>
+                        {{ __('Tickets') }}
+                    </x-nav-link>
+                    <x-nav-link>
+                        {{ __('Notifications') }}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Admin\OrganizerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +27,7 @@ Route::middleware([
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    // Admin routes here
+    Route::get('/organizers', [OrganizerController::class, 'organizers'])->name('organizers');
 });
 
 Route::middleware(['auth', 'client'])->group(function () {

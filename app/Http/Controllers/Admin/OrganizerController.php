@@ -1,12 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Organizer;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Organizer;
+use illuminate\Support\Facades\Auth;
 
 class OrganizerController extends Controller
 {
+
+    public function organizers() {
+            return view('admin.organizers');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -65,7 +72,8 @@ class OrganizerController extends Controller
 
     public function __construct()
     {
-        $this->middleware('organizer');
+        $this->middleware('auth');
+        $this->middleware('admin');
     }
 
 }

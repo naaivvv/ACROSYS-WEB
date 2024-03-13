@@ -16,7 +16,7 @@ class OrganizerMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role == 'organizer') {
+        if (Auth::check() && Auth::user()->role == 2) {
             return $next($request);
         }
 
