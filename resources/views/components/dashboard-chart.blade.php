@@ -3,6 +3,11 @@
         <div class="flex items-center">
             <h1 class="mt-8 text-2xl font-medium text-gray-900 text-center">
                 Welcome to your Jetstream application!
+                {!! $chart->container() !!}
+
+                <script src="{{ $chart->cdn() }}"></script>
+
+                {{ $chart->script() }}
             </h1>
         </div>
         <div class="flex items-center">
