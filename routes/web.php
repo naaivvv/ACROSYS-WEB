@@ -28,6 +28,7 @@ Route::middleware([
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/organizers', [OrganizerController::class, 'organizers'])->name('organizers');
+    Route::get('/organizers/{organizer}/edit', [OrganizerController::class, 'edit'])->name('organizers.edit');
 });
 
 Route::middleware(['auth', 'client'])->group(function () {

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Organizer;
 use illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class OrganizerController extends Controller
 {
@@ -49,9 +50,9 @@ class OrganizerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $organizer)
     {
-        //
+        return view('admin.organizers-edit');
     }
 
     /**
