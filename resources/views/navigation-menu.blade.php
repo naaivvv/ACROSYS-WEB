@@ -4,23 +4,25 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
+                {{-- <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
-                </div>
+                </div> --}}
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+
+                    {{-- <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
-                    </x-nav-link>
-                    @if(Auth::check() && Auth::user()->role == 1) {{-- Assuming 1 represents the admin role --}}
-                    <x-nav-link href="{{ route('organizers') }}" :active="request()->routeIs('organizers')">
+                    </x-nav-link> --}}
+                    {{-- @if(Auth::check() && Auth::user()->role == 1) --}}
+                     {{-- Assuming 1 represents the admin role --}}
+                    {{-- <x-nav-link href="{{ route('admin.organizers') }}" :active="request()->routeIs('admin.organizers')">
                         {{ __('Organizer') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
                     {{-- <x-nav-link href="{{ route('organizers') }}" :active="request()->routeIs('organizers')"> --}}
-                    <x-nav-link>
+                    {{-- <x-nav-link>
                         {{ __('Clients') }}
                     </x-nav-link>
                     <x-nav-link>
@@ -28,8 +30,8 @@
                     </x-nav-link>
                     <x-nav-link>
                         {{ __('Notifications') }}
-                    </x-nav-link>
-                    @endif
+                    </x-nav-link> --}}
+                    {{-- @endif --}}
                 </div>
             </div>
 

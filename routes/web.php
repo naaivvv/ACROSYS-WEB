@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Admin\OrganizerController;
+use App\Http\Controllers\Admin\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,8 +27,11 @@ Route::middleware([
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/organizers', [OrganizerController::class, 'organizers'])->name('organizers');
-    Route::get('/organizers/{organizer}/edit', [OrganizerController::class, 'edit'])->name('organizers.edit');
+    Route::get('/organizers', [AdminController::class, 'organizers'])->name('admin.organizers');
+    Route::get('/clients', [AdminController::class, 'clients'])->name('admin.clients');
+    Route::get('/tickets', [AdminController::class, 'tickets'])->name('admin.tickets');
+    Route::get('/notifications', [AdminController::class, 'notifications'])->name('admin.notifications');
+    Route::get('/organizers/{organizer}/edit', [AdminController::class, 'edit'])->name('organizers.edit');
 });
 
 Route::middleware(['auth', 'client'])->group(function () {

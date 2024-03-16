@@ -17,4 +17,19 @@ class AdminController extends Controller
         $this->middleware('admin');
     }
 
+    public function organizers() {
+        return view('admin.organizers');
+    }
+
+    public function clients() {
+        return view('admin.clients');
+    }
+
+    public function tickets() {
+        return view('admin.tickets');
+    }
+
+    public function notifications() {
+        return view('admin.notifications');
+    }
 }

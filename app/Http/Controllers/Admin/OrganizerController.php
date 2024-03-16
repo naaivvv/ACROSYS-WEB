@@ -11,10 +11,6 @@ use App\Models\User;
 class OrganizerController extends Controller
 {
 
-    public function organizers() {
-            return view('admin.organizers');
-    }
-
     /**
      * Display a listing of the resource.
      */
