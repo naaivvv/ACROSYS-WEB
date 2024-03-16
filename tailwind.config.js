@@ -12,7 +12,11 @@ export default {
         './resources/views/**/*.blade.php',
         './app/Http/Livewire/**/*Table.php',
         './vendor/power-components/livewire-powergrid/resources/views/**/*.php',
-        './vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php'
+        './vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php',
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
+        "./node_modules/flowbite/**/*.js"
     ],
 
     theme: {
@@ -23,5 +27,9 @@ export default {
         },
     },
 
-    plugins: [forms, typography, require("./vendor/power-components/livewire-powergrid/tailwind.config.js")],
+    plugins: [forms, typography, require("./vendor/power-components/livewire-powergrid/tailwind.config.js"),
+        require('flowbite/plugin')({
+            charts: true,
+        })
+    ],
 };

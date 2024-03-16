@@ -5,9 +5,9 @@
         </h2>
     </x-slot>
 
-    <div class="py-12 flex items-center">
+    <div class="py-8 flex items-center">
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-8 flex gap-2">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="overflow-hidden">
                 <x-welcome />
             </div>
         </div>
