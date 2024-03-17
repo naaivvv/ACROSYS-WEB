@@ -59,9 +59,11 @@ final class UserTable extends PowerGridComponent
             ->add('name')
             ->add('email')
             ->add('phone')
-            ->add('birthday_formatted', fn (User $model) => Carbon::parse($model->birthday)->format('d/m/Y'))
-            ->add('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('d/m/Y'))
-            ->add('updated_at_formatted', fn (User $model) => Carbon::parse($model->updated_at)->format('d/m/Y'));
+            ->add('birthday_formatted', fn (User $model) => Carbon::parse($model->birthday)->format('m/d/Y'))
+            ->add('created_at')
+            ->add('updated_at');
+            // ->add('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('m/d/Y'))
+            // ->add('updated_at_formatted', fn (User $model) => Carbon::parse($model->updated_at)->format('m/d/Y'));
     }
 
 
@@ -88,14 +90,13 @@ final class UserTable extends PowerGridComponent
                 ->editOnClick(),
 
             Column::make('Birthday', 'birthday_formatted', 'birthday')
-                ->sortable()
-                ->editOnClick(),
+                ->sortable(),
 
-            Column::make('Created at', 'created_at_formatted', 'created_at')
+            Column::make('Created at', 'created_at')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Updated at', 'created_at_formatted', 'updated_at')
+            Column::make('Updated at', 'updated_at')
                 ->sortable()
                 ->searchable(),
 
@@ -108,8 +109,7 @@ final class UserTable extends PowerGridComponent
         $rules = [
             'name' => ['required', 'min:3'],
             'email' => ['required', 'email'],
-            'phone' => ['required', 'regex:/^[0-9]+$/'],
-            'birthday' => ['required', 'date_format:d/m/Y']
+            'phone' => ['required', 'regex:/^[0-9]+$/']
         ];
 
         if (!isset($rules[$field])) {
@@ -163,11 +163,11 @@ final class UserTable extends PowerGridComponent
     {
 
         return [
-            // Button::add('edit')
-            //     ->slot('Edit')
-            //     ->id()
-            //     ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-            //     ->route('organizers.edit', ['organizer' => $row->id]),
+            Button::add('edit')
+                ->slot('Edit')
+                ->id()
+                ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
+                ->route('organizers.edit', ['organizer' => $row->id]),
 
             Button::add('destroy')
                 ->slot('Delete')

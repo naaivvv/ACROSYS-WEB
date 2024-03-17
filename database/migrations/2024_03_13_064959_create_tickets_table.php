@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('event_id');
             $table->unsignedBigInteger('attendee_id');
             $table->string('ref_num')->nullable();
-            $table->string('status')->default('Pending')->comment('Pending, Paid, Terminated');
+            $table->string('status')->default('Pending')->comment('Pending, Reserved, Paid, Terminated');
             $table->timestamp('checked_in')->nullable();
             $table->timestamp('checked_out')->nullable();
             $table->timestamps();
