@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\Ticket;
+use Carbon\Carbon;
+
 class DashboardController extends Controller
 {
     public function index()
@@ -15,6 +17,7 @@ class DashboardController extends Controller
         $totalClients = User::where('role','0')->count();
         $totalEvents = Event::count();
         $totalTicketsManaged = Ticket::where('status','Reserved')->count();
+        $usersThisWeek = User::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
         if($role=='0') {
             return view('client.dashboard');
         }
@@ -24,7 +27,8 @@ class DashboardController extends Controller
                 'totalOrganizers' => $totalOrganizers,
                 'totalClients' => $totalClients,
                 'totalEvents' => $totalEvents,
-                'totalTicketsManaged' =>$totalTicketsManaged
+                'totalTicketsManaged' => $totalTicketsManaged,
+                'usersThisWeek' => $usersThisWeek
             ]);
         }
         else if($role=='2') {

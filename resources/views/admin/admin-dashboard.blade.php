@@ -13,6 +13,7 @@
                     :totalClients="$totalClients"
                     :totalEvents="$totalEvents"
                     :totalTicketsManaged="$totalTicketsManaged"
+                    :usersThisWeek="$usersThisWeek"
                 />
             </div>
         </div>
