@@ -89,7 +89,8 @@
                 @endif
 
                 <!-- Settings Dropdown -->
-                <div class="ms-3 relative">
+                <div class="ms-3 relative flex flex-row items-center">
+                    <div class="mr-3"><a href="{{ route('profile.show') }}" class="text-gray-500 focus:text-gray-700 hover:text-gray-700 text-md transition duration-150 ease-in-out">{{ Auth::user()->name }}</a></div>
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())

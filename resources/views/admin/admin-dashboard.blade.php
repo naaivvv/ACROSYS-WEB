@@ -6,9 +6,9 @@
     </x-slot>
 
     <div class="py-8 flex items-center">
-        <div class="max-w-8xl mx-auto sm:px-6 lg:px-8 flex gap-2">
+        <div class="max-w-8xl mx-auto sm:px-6 lg:px-8 flex gap-2 w-full">
             <div class="overflow-hidden">
-                <x-welcome />
+                <x-welcome-admin />
             </div>
         </div>
     </div>

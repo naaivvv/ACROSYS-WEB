@@ -30,6 +30,6 @@ export default {
     plugins: [forms, typography, require("./vendor/power-components/livewire-powergrid/tailwind.config.js"),
         require('flowbite/plugin')({
             charts: true,
-        })
+        }),
     ],
 };
