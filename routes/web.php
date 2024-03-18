@@ -30,6 +30,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/chart-data/{period?}', 'App\Http\Controllers\Admin\AdminController@getChartData');
     Route::get('/organizers', [AdminController::class, 'organizers'])->name('admin.organizers');
     Route::get('/clients', [AdminController::class, 'clients'])->name('admin.clients');
+    Route::get('/events', [AdminController::class, 'events'])->name('admin.events');
     Route::get('/tickets', [AdminController::class, 'tickets'])->name('admin.tickets');
     Route::get('/notifications', [AdminController::class, 'notifications'])->name('admin.notifications');
     Route::get('/organizers/{organizer}/edit', [AdminController::class, 'edit'])->name('organizers.edit');

@@ -9,12 +9,15 @@
         <x-s-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
             {{ __('Dashboard') }}
         </x-s-nav-link>
-        @if(Auth::check() && Auth::user()->role == 1) {{-- Assuming 1 represents the admin role --}}
+        @if(Auth::check() && Auth::user()->role == 1)
         <x-s-nav-link href="{{ route('admin.organizers') }}" :active="request()->routeIs('admin.organizers')">
             {{ __('Organizer') }}
         </x-s-nav-link>
         <x-s-nav-link href="{{ route('admin.clients') }}" :active="request()->routeIs('admin.clients')">
             {{ __('Clients') }}
+        </x-s-nav-link>
+        <x-s-nav-link href="{{ route('admin.events') }}" :active="request()->routeIs('admin.events')">
+            {{ __('Events') }}
         </x-s-nav-link>
         <x-s-nav-link href="{{ route('admin.tickets') }}" :active="request()->routeIs('admin.tickets')">
             {{ __('Tickets') }}

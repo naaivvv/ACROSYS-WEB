@@ -23,6 +23,8 @@ class DashboardController extends Controller
             ->whereMonth('created_at', Carbon::now()->month)
             ->count();
         
+        $currentDate = Carbon::now()->toDateString();
+
         if ($role == '0') {
             return view('client.dashboard');
         } elseif ($role == '1') {
@@ -32,6 +34,7 @@ class DashboardController extends Controller
                 'totalEvents' => $totalEvents,
                 'totalTicketsManaged' => $totalTicketsManaged,
                 'usersThisMonth' => $usersThisMonth,
+                'currentDate' => $currentDate,
             ]);
         } elseif ($role == '2') {
             return view('organizer.organizer-dashboard');
