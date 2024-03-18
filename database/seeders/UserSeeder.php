@@ -24,6 +24,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
+        User::factory(100)->create();
+
         // Client user
         User::create([
             'name' => 'Client',
