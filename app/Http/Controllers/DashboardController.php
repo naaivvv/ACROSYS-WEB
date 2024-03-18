@@ -12,26 +12,28 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $role=Auth::user()->role;
-        $totalOrganizers = User::where('role','2')->count();
-        $totalClients = User::where('role','0')->count();
+        $role = Auth::user()->role;
+        $totalOrganizers = User::where('role', '2')->count();
+        $totalClients = User::where('role', '0')->count();
         $totalEvents = Event::count();
-        $totalTicketsManaged = Ticket::where('status','Reserved')->count();
-        $usersThisWeek = User::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
-        if($role=='0') {
+        $totalTicketsManaged = Ticket::where('status', 'Reserved')->count();
+        
+        // Calculate the count of users created within the current month
+        $usersThisMonth = User::whereYear('created_at', Carbon::now()->year)
+            ->whereMonth('created_at', Carbon::now()->month)
+            ->count();
+        
+        if ($role == '0') {
             return view('client.dashboard');
-        }
-        else if($role=='1') {
-            return view('admin.admin-dashboard',
-             [
+        } elseif ($role == '1') {
+            return view('admin.admin-dashboard', [
                 'totalOrganizers' => $totalOrganizers,
                 'totalClients' => $totalClients,
                 'totalEvents' => $totalEvents,
                 'totalTicketsManaged' => $totalTicketsManaged,
-                'usersThisWeek' => $usersThisWeek
+                'usersThisMonth' => $usersThisMonth,
             ]);
-        }
-        else if($role=='2') {
+        } elseif ($role == '2') {
             return view('organizer.organizer-dashboard');
         }
     }
