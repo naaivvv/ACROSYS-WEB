@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('event_code');
             $table->string('name');
             $table->dateTime('date');
-            $table->string('description');
+            $table->text('description');
             $table->string('location');
             $table->timestamps();
         });

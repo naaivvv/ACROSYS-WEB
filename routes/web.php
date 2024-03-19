@@ -28,6 +28,7 @@ Route::middleware([
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/chart-data/{period?}', 'App\Http\Controllers\Admin\AdminController@getChartData');
+    Route::get('/get-ticket-data', 'App\Http\Controllers\Admin\AdminController@getTicketData');
     Route::get('/organizers', [AdminController::class, 'organizers'])->name('admin.organizers');
     Route::get('/clients', [AdminController::class, 'clients'])->name('admin.clients');
     Route::get('/events', [AdminController::class, 'events'])->name('admin.events');

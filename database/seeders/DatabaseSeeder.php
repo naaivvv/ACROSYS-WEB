@@ -6,6 +6,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\AttendeeSeeder;
+use Database\Seeders\EventSeeder;
+use Database\Seeders\TicketSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,7 +24,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
+            EventSeeder::class,
             AttendeeSeeder::class,
+            TicketSeeder::class,
         ]);
     }
 }

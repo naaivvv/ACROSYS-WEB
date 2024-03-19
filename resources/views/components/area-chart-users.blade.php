@@ -9,7 +9,7 @@
             <div class="user-increase-percentage">
                 0%
             </div>
-        <svg class="w-3 h-3 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
+        <svg class="w-3 h-3 ms-1 arrow-svg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4"/>
         </svg>
       </div>
@@ -52,7 +52,7 @@
         <a
           href="#"
           class="uppercase text-sm font-semibold inline-flex items-center rounded-lg text-blue-600 hover:text-blue-700 dark:hover:text-blue-500  hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 px-3 py-2">
-          Users Report
+          View Users
           <svg class="w-2.5 h-2.5 ms-1.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
           </svg>
@@ -65,8 +65,21 @@
     fetch('/chart-data')
     .then(response => response.json())
     .then(data => {
+        const percentageChange = (data.percentageChange * 100).toFixed(1);
+        const userIncreasePercentage = document.querySelector('.user-increase-percentage');
+        const arrowSvg = document.querySelector('.arrow-svg');
 
-      document.querySelector('.user-increase-percentage').textContent = (data.percentageChange * 100).toFixed(1) + '%';
+        userIncreasePercentage.textContent = percentageChange + '%';
+
+        if (data.percentageChange < 0) {
+            userIncreasePercentage.parentElement.classList.remove('text-green-500');
+            userIncreasePercentage.parentElement.classList.add('text-red-500');
+            arrowSvg.style.transform = 'rotate(180deg)';
+        } else {
+            userIncreasePercentage.parentElement.classList.remove('text-red-500');
+            userIncreasePercentage.parentElement.classList.add('text-green-500');
+            arrowSvg.style.transform = 'rotate(0deg)';
+        }
   const options = {
     chart: {
       height: "100%",

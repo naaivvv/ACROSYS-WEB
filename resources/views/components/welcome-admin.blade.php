@@ -26,7 +26,9 @@
 
     </div>
     <div class="w-full md:w-1/2 lg:w-1/2 p-2">
-        <div class="bg-white border-b border-gray-200 p-6 lg:p-8 overflow-hidden shadow-xl sm:rounded-lg min-h-[78.5rem] max-h-[78rem]"><x-notifications-dashboard /></div>
+        <div class="bg-white border-b border-gray-200 p-6 lg:p-8 overflow-hidden shadow-xl sm:rounded-lg min-h-[78.5rem] max-h-[78rem]"><livewire:latest-events />
+``
+</div>
     </div>
 
 </div>
