@@ -16,7 +16,8 @@ export default {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
-        "./node_modules/flowbite/**/*.js"
+        "./node_modules/flowbite/**/*.js",
+        'node_modules/preline/dist/*.js',
     ],
 
     theme: {
@@ -27,7 +28,7 @@ export default {
         },
     },
 
-    plugins: [forms, typography, require("./vendor/power-components/livewire-powergrid/tailwind.config.js"),
+    plugins: [forms, typography, require('preline/plugin'), require("./vendor/power-components/livewire-powergrid/tailwind.config.js"),
         require('flowbite/plugin')({
             charts: true,
         }),

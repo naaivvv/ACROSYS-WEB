@@ -67,6 +67,8 @@ class AdminController extends Controller
 
         $totalTerminated = Ticket::where('status', 'Terminated')->whereYear('created_at', $currentYear)->count();
 
+        $totalPendings = Ticket::where('status', 'Pending')->whereYear('created_at', $currentYear)->count();
+
         $reservedRate = ($totalReserved / $totalTickets) * 100;
 
         $reservedTickets = Ticket::select(DB::raw("COUNT(*) as count"), DB::raw("MONTH(created_at) as month"))
@@ -87,6 +89,15 @@ class AdminController extends Controller
 
         $terminatedCounts = $terminatedTickets->pluck('count');
 
+        $pendingTickets = Ticket::select(DB::raw("COUNT(*) as count"), DB::raw("MONTH(created_at) as month"))
+            ->whereYear('created_at', $currentYear)
+            ->where('status', 'Pending')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get();
+
+        $pendingCounts = $pendingTickets->pluck('count');
+
         $months = $reservedTickets->pluck('month')->map(function ($month) {
             return date('F', mktime(0, 0, 0, $month, 1));
         });
@@ -95,9 +106,11 @@ class AdminController extends Controller
             'totalTickets' => $totalTickets,
             'totalReserved' => $totalReserved,
             'totalTerminated' => $totalTerminated,
+            'totalPendings' => $totalPendings,
             'reservedRate' => $reservedRate,
             'reservedCounts' => $reservedCounts,
             'terminatedCounts' => $terminatedCounts,
+            'pendingCounts' => $pendingCounts,
             'months' => $months
         ]);
     }

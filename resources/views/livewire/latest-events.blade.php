@@ -17,6 +17,12 @@
                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
                                 {{ $event->name }}
                             </p>
+                            <p class="text-sm text-gray-600 truncate dark:text-gray-600">
+                                {{ $event->date }}
+                            </p>
+                            <p class="text-sm text-gray-500 truncate dark:text-gray-500">
+                                {{ $event->location }}
+                            </p>
                             <p class="text-sm text-gray-500 truncate dark:text-gray-400">
                                 {{ $event->description }}
                             </p>

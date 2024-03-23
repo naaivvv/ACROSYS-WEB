@@ -11,3 +11,5 @@ import flatpickr from "flatpickr";
 import ApexCharts from 'apexcharts';
 
 import 'flowbite';
+
+import 'preline';

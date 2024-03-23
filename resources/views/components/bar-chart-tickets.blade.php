@@ -10,15 +10,19 @@
           <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4"/>
           </svg>
-           Reserve Rate&nbsp;<span class="reserve-rate">0</span>
+           Reserve Rate&nbsp;<span class="reserve-rate">0</span>%
         </span>
       </div>
     </div>
 
-    <div class="grid grid-cols-2 py-3">
+    <div class="grid grid-cols-3 py-3">
       <dl>
         <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">Reserved</dt>
         <dd class="leading-none text-xl font-bold text-green-500 dark:text-green-400 reserved-count">0</dd>
+      </dl>
+      <dl>
+        <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">Pending</dt>
+        <dd class="leading-none text-xl font-bold text-orange-600 dark:text-orange-500 pending-count">0</dd>
       </dl>
       <dl>
         <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">Terminated</dt>
@@ -86,6 +90,7 @@
         document.querySelector('.tickets-year').textContent = data.totalTickets;
         document.querySelector('.reserved-count').textContent = data.totalReserved;
         document.querySelector('.terminated-count').textContent = data.totalTerminated;
+        document.querySelector('.pending-count').textContent = data.totalPendings;
         let rateElement = document.querySelector('.reserve-rate');
         let svgElement = document.querySelector('svg');
         let parentElement = rateElement.parentElement;
@@ -108,6 +113,11 @@
                     name: "Reserved",
                     color: "#31C48D",
                     data: data.reservedCounts.map(String),
+                },
+                {
+                    name: "Pending",
+                    color: "#ea580c",
+                    data: data.pendingCounts.map(String),
                 },
                 {
                     name: "Terminated",
