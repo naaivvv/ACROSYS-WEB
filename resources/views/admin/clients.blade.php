@@ -6,9 +6,12 @@
     </x-slot>
 
     <div class="py-8 flex items-center ">
-        <div class="max-w-8xl mx-auto flex gap-2">
-            <div class="max-w-5xl bg-white overflow-hidden shadow-xl sm:rounded-lg p-6 lg:p-8">
-                <livewire:user-table />
+        <div class="max-w-7xl mx-auto flex gap-2">
+            <div class="max-w-6xl bg-white overflow-hidden shadow-xl sm:rounded-lg p-6 lg:p-8">
+                <div class="mb-4 w-full">
+                    <livewire:add-client />
+                </div>
+                <livewire:client-table/>
             </div>
         </div>
     </div>

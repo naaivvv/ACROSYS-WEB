@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit Organizers') }}
+            {{ __('Edit Clients') }}
         </h2>
     </x-slot>
 
@@ -13,7 +13,7 @@
                     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                     </div>
                     <!-- Modal body -->
-                    <form method="POST" action="{{ route('organizers.update', ['rowId' => $user->id]) }}" class="p-4 md:p-5">
+                    <form method="POST" action="{{ route('clients.update', ['rowId' => $user->id]) }}" class="p-4 md:p-5">
                         @csrf
                         @method('PUT')
                         <div class="grid gap-4 mb-4 grid-cols-2">

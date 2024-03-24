@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'ACROSYS') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -21,10 +21,10 @@
         <x-banner />
 
         <div class="min-h-screen bg-gray-100 flex">
-            <div class="w-1/5 bg-white shadow-lg">
+            <div class="md:w-1/5 lg:w-1/5 2xl:w-1/6 md:block lg:block sm:hidden bg-white shadow-lg">
                 <x-side-navigation-menu />
             </div>
-            <div class="w-5/6">
+            <div class="md:w-4/5 lg:w-4/5 2xl:w-5/6 w-full">
                 @livewire('navigation-menu')
 
                 <!-- Page Heading -->
