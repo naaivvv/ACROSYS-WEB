@@ -11,8 +11,12 @@ class EventFactory extends Factory
 
     public function definition()
     {
+        $prefix = $this->faker->unique()->regexify('[A-Z]{3}');
+        $suffix = $this->faker->bothify('##??');
+        $event_code = $prefix . $suffix;
+
         return [
-            'event_code' => $this->faker->unique()->bothify('EVENT##??'),
+            'event_code' => $event_code,
             'name' => $this->faker->sentence(3),
             'date' => $this->faker->dateTimeBetween('-6 months', 'now'),
             'description' => $this->faker->text(200),
