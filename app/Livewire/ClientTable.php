@@ -16,10 +16,9 @@ use PowerComponents\LivewirePowerGrid\PowerGridFields;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Traits\WithExport;
 use Illuminate\Support\Facades\Validator;
-use Livewire\Component;
 use Livewire\Attributes\On;
 
-final class UserTable extends PowerGridComponent
+final class ClientTable extends PowerGridComponent
 {
     use WithExport;
 
@@ -45,14 +44,13 @@ final class UserTable extends PowerGridComponent
 
     public function datasource(): Builder
     {
-        return User::query()->where('role', '=', 2);
+        return User::query()->where('role', '=', 0);
     }
 
     public function relationSearch(): array
     {
         return [];
     }
-
 
     public function fields(): PowerGridFields
     {
@@ -64,10 +62,7 @@ final class UserTable extends PowerGridComponent
             ->add('birthday_formatted', fn (User $model) => Carbon::parse($model->birthday)->format('m/d/Y'))
             ->add('created_at')
             ->add('updated_at');
-            // ->add('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('m/d/Y'))
-            // ->add('updated_at_formatted', fn (User $model) => Carbon::parse($model->updated_at)->format('m/d/Y'));
     }
-
 
     public function columns(): array
     {
@@ -160,10 +155,10 @@ final class UserTable extends PowerGridComponent
         }
     }
 
-    #[On('editOrganizer')]
-    public function editOrganizer($rowId)
+    #[On('editClient')]
+    public function editClient($rowId)
     {
-        return redirect()->route('organizers.edit', ['rowId' => $rowId]);
+        return redirect()->route('clients.edit', ['rowId' => $rowId]);
     }
 
 
@@ -175,7 +170,7 @@ final class UserTable extends PowerGridComponent
                 ->slot('Edit')
                 ->id()
                 ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->dispatch('editOrganizer', ['rowId' => $row->id]),
+                ->dispatch('editClient', ['rowId' => $row->id]),
 
             Button::add('destroy')
                 ->slot('Delete')

@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Ticket;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Carbon;
 
 class AdminController extends Controller
 {
@@ -113,5 +115,51 @@ class AdminController extends Controller
             'pendingCounts' => $pendingCounts,
             'months' => $months
         ]);
+    }
+
+    public function editOrganizer($rowId) {
+        $user = User::findOrFail($rowId);
+        return view('admin.organizers-edit', ['user' => $user]);
+    }
+
+    public function updateOrganizer(Request $request, $rowId) {
+        $user = User::findOrFail($rowId);
+        $data = $request->all();
+
+        // Check if the password is being updated
+        if(isset($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        }
+
+        $user->update($data);
+
+        if($user->wasChanged()) {
+            return redirect()->route('admin.organizers')->with('success', 'Organizer updated successfully!');
+        } else {
+            return redirect()->route('admin.organizers')->with('error', 'No changes were made.');
+        }
+    }
+
+    public function editClient($rowId) {
+        $user = User::findOrFail($rowId);
+        return view('admin.clients-edit', ['user' => $user]);
+    }
+
+    public function updateClient(Request $request, $rowId) {
+        $user = User::findOrFail($rowId);
+        $data = $request->all();
+
+        // Check if the password is being updated
+        if(isset($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        }
+
+        $user->update($data);
+
+        if($user->wasChanged()) {
+            return redirect()->route('admin.clients')->with('success', 'Organizer updated successfully!');
+        } else {
+            return redirect()->route('admin.clients')->with('error', 'No changes were made.');
+        }
     }
 }

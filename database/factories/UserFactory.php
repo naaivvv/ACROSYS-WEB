@@ -23,6 +23,8 @@ class UserFactory extends Factory
     {
         $createdAt = $this->faker->dateTimeBetween('2024-01-01', '2024-03-18');
 
+        $phoneNumber = '09' . $this->faker->randomNumber(9, true);
+
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
@@ -34,7 +36,7 @@ class UserFactory extends Factory
             'profile_photo_path' => null,
             'current_team_id' => null,
             'role' => $this->faker->randomElement([0, 0, 0, 2]),
-            'phone' => $this->faker->phoneNumber,
+            'phone' => $phoneNumber,
             'birthday' => $this->faker->date('Y-m-d'),
             'created_at' => $createdAt,
         ];

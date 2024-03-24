@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Livewire\AddOrganizer;
+use App\Livewire\AddClient;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +37,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/events', [AdminController::class, 'events'])->name('admin.events');
     Route::get('/tickets', [AdminController::class, 'tickets'])->name('admin.tickets');
     Route::get('/notifications', [AdminController::class, 'notifications'])->name('admin.notifications');
-    Route::get('/organizers/{organizer}/edit', [AdminController::class, 'edit'])->name('organizers.edit');
+    Route::get('/organizers/edit/{rowId}', [AdminController::class, 'editOrganizer'])->name('organizers.edit');
+    Route::put('/organizers/edit/{rowId}', [AdminController::class, 'updateOrganizer'])->name('organizers.update');
+    Route::get('/clients/edit/{rowId}', [AdminController::class, 'editClient'])->name('clients.edit');
+    Route::put('/clients/edit/{rowId}', [AdminController::class, 'updateClient'])->name('clients.update');
+    Route::get('/organizers/create', AddOrganizer::class)->name('organizers.create');
+    Route::get('/organizers/create', [AddOrganizer::class, 'index'])->name('organizers.add');
+    Route::get('/clients/create', AddClient::class)->name('clients.create');
+    Route::get('/clients/create', [AddClient::class, 'index'])->name('clients.add');
+
 });
 
 Route::middleware(['auth', 'client'])->group(function () {
