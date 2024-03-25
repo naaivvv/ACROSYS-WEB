@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Attendee;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AttendeeFactory extends Factory
@@ -11,15 +12,12 @@ class AttendeeFactory extends Factory
 
     public function definition()
     {
-        $ref_id = null;
-        do {
-            $ref_id = '0000' . $this->faker->randomNumber(7, true);
-        } while (Attendee::where('ref_id', $ref_id)->exists());
+        $user = User::inRandomOrder()->first();
 
         return [
             'fname' => $this->faker->firstName,
             'lname' => $this->faker->lastName,
-            'ref_id' => $ref_id,
+            'ref_id' => $user->id,
             'email' => $this->faker->unique()->safeEmail,
         ];
     }
