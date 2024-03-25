@@ -54,4 +54,6 @@ Route::middleware(['auth', 'client'])->group(function () {
 
 Route::middleware(['auth', 'organizer'])->group(function () {
     // Organizer routes here
+    Route::get('/chart-data/{period?}', 'App\Http\Controllers\Organizer\OrganizerController@getChartData');
+    Route::get('/get-ticket-data', 'App\Http\Controllers\Organizer\OrganizerController@getTicketData');
 });

@@ -15,4 +15,9 @@ class Attendee extends Model
         'ref_id',
         'email',
     ];
+
+    public function events()
+    {
+        return $this->belongsToMany(Event::class, 'event_attendee', 'attendee_id', 'event_id');
+    }
 }

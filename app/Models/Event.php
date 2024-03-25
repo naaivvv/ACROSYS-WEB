@@ -18,4 +18,9 @@ class Event extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function organizers()
+    {
+        return $this->belongsToMany(User::class, 'event_organizer', 'event_id', 'user_id');
+    }
 }

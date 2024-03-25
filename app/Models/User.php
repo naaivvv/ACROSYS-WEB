@@ -63,4 +63,10 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function organizedEvents()
+    {
+        return $this->belongsToMany(Event::class, 'event_organizer', 'user_id', 'event_id');
+    }
+
 }
