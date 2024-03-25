@@ -84,7 +84,7 @@
   </div>
 
   <script>
-    fetch('/get-ticket-data')
+    fetch('/get-ticket-data-for-org')
     .then(response => response.json())
     .then(data => {
         document.querySelector('.tickets-year').textContent = data.totalTickets;

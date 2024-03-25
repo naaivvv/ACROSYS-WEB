@@ -62,7 +62,7 @@
   </div>
 
   <script>
-    fetch('/chart-data')
+    fetch('/chart-data-for-org')
     .then(response => response.json())
     .then(data => {
         const percentageChange = (data.percentageChange * 100).toFixed(1);
