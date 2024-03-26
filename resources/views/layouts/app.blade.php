@@ -21,7 +21,7 @@
         <x-banner />
 
         <div class="min-h-screen bg-gray-100 flex">
-            <div class="md:w-1/5 lg:w-1/5 2xl:w-1/6 md:block lg:block sm:hidden bg-white shadow-lg">
+            <div class="md:w-1/5 lg:w-1/5 2xl:w-1/6 md:block lg:block sm:hidden bg-white shadow-lg relative">
                 <x-side-navigation-menu />
             </div>
             <div class="md:w-4/5 lg:w-4/5 2xl:w-5/6 w-full">
@@ -30,7 +30,7 @@
                 <!-- Page Heading -->
                 @if (isset($header))
                     <header class="bg-white shadow">
-                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 bg-orange-50 border-3 border-b-orange-400">
                             {{ $header }}
                         </div>
                     </header>
