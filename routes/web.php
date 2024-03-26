@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Organizer\OrganizerController;
+use App\Http\Controllers\Client\ClientController;
 use App\Livewire\AddOrganizer;
 use App\Livewire\AddClient;
 
@@ -51,10 +53,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 Route::middleware(['auth', 'client'])->group(function () {
     // Client routes here
+    Route::get('/events', [ClientController::class, 'events'])->name('client.events');
+    Route::get('/tickets', [ClientController::class, 'tickets'])->name('client.tickets');
 });
 
 Route::middleware(['auth', 'organizer'])->group(function () {
     // Organizer routes here
     Route::get('/chart-data-for-org/{period?}', 'App\Http\Controllers\Organizer\OrganizerController@getChartData');
     Route::get('/get-ticket-data-for-org', 'App\Http\Controllers\Organizer\OrganizerController@getTicketData');
+    Route::get('/events', [OrganizerController::class, 'events'])->name('organizer.events');
+    Route::get('/attendees', [OrganizerController::class, 'attendees'])->name('organizer.attendees');
+    Route::get('/tickets', [OrganizerController::class, 'tickets'])->name('organizer.tickets');
 });

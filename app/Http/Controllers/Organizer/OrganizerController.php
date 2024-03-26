@@ -19,6 +19,17 @@ class OrganizerController extends Controller
         $this->middleware('organizer');
     }
 
+    public function events() {
+        return view('organizer.events');
+    }
+    public function attendees() {
+        return view('organizer.attendees');
+    }
+
+    public function tickets() {
+        return view('organizer.tickets');
+    }
+
     public function getChartData()
     {
         $user = auth()->user();

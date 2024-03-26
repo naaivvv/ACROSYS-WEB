@@ -69,4 +69,12 @@ class ClientController extends Controller
         $this->middleware('client');
     }
 
+    public function events() {
+        return view('client.events');
+    }
+
+    public function tickets() {
+        return view('client.tickets');
+    }
+
 }
