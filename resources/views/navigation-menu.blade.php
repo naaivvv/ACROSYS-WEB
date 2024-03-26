@@ -160,6 +160,14 @@
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            @if(Auth::check() && Auth::user()->role == 0)
+            <x-responsive-nav-link href="{{ route('client.events') }}" :active="request()->routeIs('client.events')">
+                {{ __('Events') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('client.tickets') }}" :active="request()->routeIs('client.tickets')">
+                {{ __('Tickets') }}
+            </x-responsive-nav-link>
+            @endif
             @if(Auth::check() && Auth::user()->role == 1)
             <x-responsive-nav-link href="{{ route('admin.organizers') }}" :active="request()->routeIs('admin.organizers')">
                 {{ __('Organizer') }}
@@ -175,6 +183,17 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('admin.notifications') }}" :active="request()->routeIs('admin.notifications')">
                 {{ __('Notifications') }}
+            </x-responsive-nav-link>
+            @endif
+            @if(Auth::check() && Auth::user()->role == 2)
+            <x-responsive-nav-link href="{{ route('organizer.events') }}" :active="request()->routeIs('organizer.events')">
+                {{ __('Events') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('organizer.attendees') }}" :active="request()->routeIs('organizer.attendees')">
+                {{ __('Attendees') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('organizer.tickets') }}" :active="request()->routeIs('organizer.ticekts')">
+                {{ __('Tickets') }}
             </x-responsive-nav-link>
             @endif
         </div>
