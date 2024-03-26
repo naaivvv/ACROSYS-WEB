@@ -1,5 +1,5 @@
 <div class="hidden md:block lg:block">
-    <div class="flex flex-col pt-12 h-screen sticky top-0">
+    <div class="flex flex-col pt-12 h-screen fixed top-0">
         <div class="shrink-0 p-6 flex items-center">
             <a href="{{ route('dashboard') }}">
                 <x-application-mark class="block h-9 w-auto" />
